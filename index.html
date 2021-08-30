@@ -18,42 +18,128 @@
   height:30px; 
 }
 </style>
+<script type="text/javascript">
+function increaselink(theid){
+//connect all buttons and links :-/
+ if (theid == "upbutton1" || theid == "link1" || theid == "downbutton1"){
+  var linkaddy = document.getElementById('link1');
+  var link = document.getElementById('link1').href;
+  var countline = document.getElementById('counter1');
+    if (theid == "downbutton1"){
+   var incr = false;
+ }
+   else{
+    var incr = true;
+   }
+ }
+
+  if (theid == "upbutton2" || theid == "link2" || theid == "downbutton2"){
+  var linkaddy = document.getElementById('link2');
+  var link = document.getElementById('link2').href;
+  var countline = document.getElementById('counter2');
+        if (theid == "downbutton2"){
+   var incr = false;
+ }
+   else{
+    var incr = true;
+   }
+ }
+   if (theid == "upbutton3" || theid == "link3" || theid == "downbutton3"){
+  var linkaddy = document.getElementById('link3');
+  var link = document.getElementById('link3').href;
+  var countline = document.getElementById('counter3');
+if (theid == "downbutton3"){
+   var incr = false;
+ }
+   else{
+    var incr = true;
+   }
+ }
+    if (theid == "upbutton4" || theid == "link4" || theid == "downbutton4"){
+  var linkaddy = document.getElementById('link4');
+  var link = document.getElementById('link4').href;
+  var countline = document.getElementById('counter4');
+if (theid == "downbutton4"){
+   var incr = false;
+ }
+   else{
+    var incr = true;
+   }
+ }
+     if (theid == "upbutton5" || theid == "link5" || theid == "downbutton5"){
+  var linkaddy = document.getElementById('link5');
+  var link = document.getElementById('link5').href;
+  var countline = document.getElementById('counter5');
+if (theid == "downbutton5"){
+   var incr = false;
+ }
+   else{
+    var incr = true;
+   }
+ }
+  
+ //and the ACTUAL non copy-paste code
+  var currentep = ""
+for (var x = 0; x <= link.length; x++){
+  //if it the current index (counting from last) is a number
+  if (!isNaN(link[link.length-x])){
+    currentep += link[link.length-x]
+    currentep = currentep.split("").reverse().join("");
+    if (incr == true){
+    var nextep = parseInt(currentep)+1
+    }
+    else if (incr == false){
+    var nextep = parseInt(currentep)-1
+    }
+    var replaced = link.replace(currentep,nextep);
+}
+}//forloop
+linkaddy.href = replaced; 
+countline.innerHTML = "Episode number: "+nextep; 
+}
+
+</script>
 </head>
 <div id="flexcontainer">
 <div id="anime-holder">
   <img id="coverimage" src="https://hdwallpaperim.com/wp-content/uploads/2017/08/23/459381-colorful-minimalism-graphic_design-748x499.jpg"></img>
-  <a href="">Anime Link</a>
-  <p>Episode number: 0</p>
-<button id="upbutton"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
-<button id="downbutton"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
-</div>
+  <a href="https://genoanime.com/watch?name=noucome&episode=1" onclick="increaselink(this.id)" id="link1">Anime Link</a>
+  <p id=counter1>Episode number: 0</p>
+<button id="downbutton1" onclick="increaselink(this.id)"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
+<button id="upbutton1" onclick="increaselink(this.id)"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
+</div><!-- animeholder1-->
+
 <div id=anime-holder>
   <img id="coverimage" src="https://hdwallpaperim.com/wp-content/uploads/2017/08/23/459381-colorful-minimalism-graphic_design-748x499.jpg"></img>
-  <a href="">Anime Link</a>
-  <p>Episode number: 0</p>
-<button id="upbutton"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
-<button id="downbutton"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
-</div>
+  <a href="" onclick="increaselink(this.id)" id="link2">Anime Link</a>
+  <p id=counter2>Episode number: 0</p>
+<button id="downbutton2" onclick="increaselink(this.id)"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
+<button id="upbutton2" onclick="increaselink(this.id)"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
+</div><!-- animeholder2-->
+
 <div id=anime-holder>
   <img id="coverimage" src="https://animekaizoku.com/wp-content/uploads/2021/04/oddtaxi.jpg"></img>
-  <a href="">Odd Taxi</a>
-  <p>Episode number: 0</p>
-<button id="upbutton"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
-<button id="downbutton"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
-</div>
+  <a href="https://www.animeplyx.one/episodes/odd-taxi-episode-11/" onclick="increaselink(this.id)" id="link3">Odd Taxi</a>
+  <p id=counter3>Episode number: 11</p>
+<button id="downbutton3" onclick="increaselink(this.id)"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
+<button id="upbutton3" onclick="increaselink(this.id)"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
+</div><!-- animeholder3-->
+
 <div id=anime-holder>
   <img id="coverimage" src="https://hdwallpaperim.com/wp-content/uploads/2017/08/23/459381-colorful-minimalism-graphic_design-748x499.jpg"></img>
-  <a href="">Anime Link</a>
-  <p>Episode number: 0</p>
-<button id="upbutton"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
-<button id="downbutton"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
-</div>
+  <a href="" onclick="increaselink(this.id)" id="link4">Anime Link</a>
+  <p id=counter4>Episode number: 0</p>
+<button id=id="downbutton4" onclick="increaselink(this.id)"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
+<button id="upbutton4" onclick="increaselink(this.id)"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
+</div><!-- animeholder4-->
+
 <div id= anime-holder>
   <img id="coverimage" src="http://getwallpapers.com/wallpaper/full/d/6/a/932789-the-devil-is-a-part-timer-wallpapers-2500x1963-cell-phone.jpg"></img>
-  <a href="">The Devil is a Part-Timer</a>
-  <p>Episode number: 0</p>
-<button id="upbutton"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
-<button id="downbutton"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
-</div>
-</div>
+  <a href="https://www.animeplyx.one/episodes/hataraku-maou-sama-episode-4" onclick="increaselink(this.id)" id="link5">The Devil is a Part-Timer</a>
+  <p id=counter5>Episode number: 0</p>
+<button id="downbutton5" onclick="increaselink(this.id)"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
+<button id="upbutton5" onclick="increaselink(this.id)"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
+</div><!-- animeholder5-->
+
+</div><!-- flexcontainer-->
 </html>
