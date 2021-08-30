@@ -20,6 +20,12 @@
 }
 </style>
 <script type="text/javascript">
+  
+ if (localStorage.getItem("hrefKey") != 'undefined'){
+document.getElementById('link1').href = localStorage.getItem("hrefKey");
+document.getElementById('counter1').innerHTML = localStorage.getItem("countKey");
+}
+
 function increaselink(theid){
 //connect all buttons and links :-/
  if (theid == "upbutton1" || theid == "link1" || theid == "downbutton1"){
@@ -96,7 +102,10 @@ for (var x = 0; x <= link.length; x++){
 }
 }//forloop
 linkaddy.href = replaced; 
-countline.innerHTML = "Episode number: "+nextep; 
+localStorage.setItem("hrefKey", replaced);
+var countsave = "Episode number: "+nextep; 
+countline.innerHTML = countsave;
+localStorage.setItem("countKey", countsave);
 }
 
 </script>
@@ -104,7 +113,7 @@ countline.innerHTML = "Episode number: "+nextep;
 <div id="flexcontainer">
 <div id="anime-holder">
   <img id="coverimage" src="https://hdwallpaperim.com/wp-content/uploads/2017/08/23/459381-colorful-minimalism-graphic_design-748x499.jpg"></img>
-  <a href="https://genoanime.com/watch?name=noucome&episode=1" onclick="increaselink(this.id)" id="link1">Anime Link</a>
+  <a href="https://genoanime.com/watch?name=noucome&episode=1" onclick="increaselink(this.id)" id="link1">NouCome</a>
   <p id=counter1>Episode number: 0</p>
 <button id="downbutton1" onclick="increaselink(this.id)"><img id="buttonimg" src="https://image.flaticon.com/icons/png/512/2516/2516972.png"></img></button>
 <button id="upbutton1" onclick="increaselink(this.id)"><img id=buttonimg src="https://image.flaticon.com/icons/png/512/2516/2516974.png"</img></button>
