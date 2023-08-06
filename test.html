@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Strings</h1>
+<h2>The match() Method</h2>
+
+<p>match() searches for a match in a string.</p>
+
+<p>Do a search:</p>
+
+<p id="demo"></p>
+
+<script>
+String.prototype.replaceLast = function (what, replacement) {
+        var pcs = this.split(what);
+        var lastPc = pcs.pop();
+        return pcs.join(what) + replacement + lastPc;
+};
+    
+let counter1 = 7;  
+let text = "https://9anime.to/watch/romantic-killer.7j27y/ep-7";
+
+replaced = text.replaceLast(counter1, counter1+1); 
+document.getElementById("demo").innerHTML = replaced;
+</script>
+
+</body>
+</html>

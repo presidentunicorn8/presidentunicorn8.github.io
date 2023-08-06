@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+body{
+background-color: #393D47;
+}
+p, a, label{
+color: white; 
+}
+#flexcontainer{
+  display: flex;
+}
+#coverimage1, #coverimage2, #coverimage3, #coverimage4, #coverimage5,{
+  width: 270px;
+  height: 170px; 
+}
+#anime-holder{
+  width: 20%;
+  text-align: center; 
+  justify-content: center; 
+}
+#submit{
+  display:block;
+  margin: 0 auto;
+  }
+#buttonimg{
+  width:30px;
+  height:30px; 
+}
+form {
+  text-align: center;
+}
+</style>
+<head>
+<title>Anime Tracker</title>
+<link rel="icon" type="image/x-icon" href="https://www.google.com/s2/favicons?domain=https://jotaku.net/wp-content/uploads/2018/04/icon_new2_full.png">
+
+</head>
+<body>
+<div id="flexcontainer">
+<div id="anime-holder"><!-- animeholder1-->
+  <img id="coverimage1" src="https://tse1.mm.bing.net/th?id=OIP.NqxPsmmGseg1yDKnQX0GKQHaEY&pid=Api"></img>
+  <a data-action = "increaselink1" href="" target="_blank" id="link1">Jujutsu Kaisen</a>
+  <p class=" counter-value1">0</p>
+  <div class = "counter-controls">
+<button data-action = "decrease1"><img id="buttonimg" src="arrow-left.png"></img></button>
+<button data-action = "increase1"><img id= "buttonimg" src="arrow-right.png"></img></button>
+</div><!-- counter-controls-->
+<button data-action="clear-save1">
+	<span>Clear & Reset</span>
+</button>
+</div><!-- animeholder1-->
+
+<div id="anime-holder"><!-- animeholder2-->
+  <img id="coverimage2" src="https://tse1.explicit.bing.net/th?id=OIP.C54BP56_z6Y3JoSfFWrIowHaEK&pid=Api"></img>
+  <a data-action = "increaselink2" href="" target="_blank" id="link2">Attack on Titan</a>
+  <p class=" counter-value2">0</p>
+  <div class = "counter-controls">
+<button data-action = "decrease2"><img id="buttonimg" src="arrow-left.png"></img></button>
+<button data-action = "increase2"><img id= "buttonimg" src="arrow-right.png"></img></button>
+
+</div><!-- counter-controls-->
+<button data-action="clear-save2">
+	<span>Clear & Reset</span>
+</button>
+</div><!-- animeholder2-->
+
+<div id="anime-holder"><!-- animeholder3-->
+  <img id="coverimage3" src="https://i2.wp.com/animotaku.fr/wp-content/uploads/2021/04/anime-original-sonny-boy-annonce-1536x1085.jpeg"></img>
+  <a data-action = "increaselink3" href="" target="_blank" id="link3">Sonny Boy</a>
+  <p class=" counter-value3">0</p>
+  <div class = "counter-controls">
+<button data-action = "decrease3"><img id="buttonimg" src="arrow-left.png"></img></button>
+<button data-action = "increase3"><img id= "buttonimg" src="arrow-right.png"></img></button>
+</div><!-- counter-controls-->
+<button data-action="clear-save3">
+	<span>Clear & Reset</span>
+</button>
+</div><!-- animeholder3-->
+
+<div id="anime-holder"><!-- animeholder4-->
+  <img id="coverimage4" src="https://tse2.mm.bing.net/th?id=OIP.q3VIAQ3M9HJbKRdIam5JBAHaEK&pid=Api"></img>
+  <a data-action = "increaselink4" href="" target="_blank" id="link4">Fruits Basket S2</a>
+  <p class=" counter-value4">0</p>
+  <div class = "counter-controls">
+<button data-action = "decrease4"><img id="buttonimg" src="arrow-left.png"></img></button>
+<button data-action = "increase4"><img id= "buttonimg" src="arrow-right.png"></img></button>
+</div><!-- counter-controls-->
+<button data-action="clear-save4">
+	<span>Clear & Reset</span>
+</button>
+</div><!-- animeholder4-->
+
+<div id="anime-holder"><!-- animeholder5-->
+  <img id="coverimage5" src="https://www.thedenimkit.com/wp-content/uploads/2021/01/Demon-Slayer-Season-2-750x430.png"></img>
+  <a data-action = "increaselink5" href="" target="_blank" id="link5">Demon Slayer S2</a>
+  <p class=" counter-value5">0</p>
+  <div class = "counter-controls">
+<button data-action = "decrease5"><img id="buttonimg" src="arrow-left.png"></img></button>
+<button data-action = "increase5"><img id= "buttonimg" src="arrow-right.png"></img></button>
+</div><!-- counter-controls-->
+<button data-action="clear-save5">
+	<span>Clear & Reset</span>
+</button>
+</div><!-- animeholder5-->
+
+</div><!-- flexcontainer-->
+<div style="height: 220px;"></div>
+<form id="newanimeform">
+<label for="slot">Slot:</label>
+<select name="slot" id="slot">
+  <option value="0">0</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <br><br>
+</select>
+
+<label for="title">Title:</label>
+ <input type="text" id="title" name="title"><br><br>
+ <label for="link">Link (ending in 0):</label>
+ <input type="text" id="link" name="link"><br><br>
+ <label for="ima">Image Address:</label>
+ <input type="text" id="ima" name="ima"><br><br>
+ <p>Type "default" for default image</p>
+
+</form>
+ <button id="submit" data-action ="newanime"><img id = "buttonimg" src = "upload.png"></img></button>
+</body>
+</html>
+
+<script>
+
+var defaultimage = "https://hdwallpaperim.com/wp-content/uploads/2017/08/23/459381-colorful-minimalism-graphic_design-748x499.jpg";
+
+const actions = Array.from(document.querySelectorAll('[data-action]'));
+
+if (localStorage.getItem('counter') == null) {
+	counter = {
+		title1: 'Anime',
+		title2: 'Anime',
+		title3: 'Anime',
+		title4: 'Anime',
+		title5: 'Anime',
+		image1: '',
+		image2: '',
+		image3: '',
+		image4: '',
+		image5: '',
+		counter1: 0,
+		counter2: 0, 
+		counter3: 0,
+		counter4: 0,
+		counter5: 0, 
+		link1: '',
+		link2: '',
+		link3: '',
+		link4: '',
+		link5: '',
+		linko1: '',
+		linko2: '',
+		linko3: '',
+		linko4: '',
+		linko5: '',
+	}
+	 //puts it in localStorage as user
+	localStorage.setItem('counter', JSON.stringify(counter));
+}
+
+	
+var slot = document.querySelector("#slot").value; 
+//how we get the object
+localStorage.getItem('counter');
+//parse for use
+counter = JSON.parse(localStorage.getItem('counter'));
+
+document.querySelector(".counter-value1").innerText = counter.counter1;
+document.querySelector(".counter-value2").innerText = counter.counter2;
+document.querySelector(".counter-value3").innerText = counter.counter3;
+document.querySelector(".counter-value4").innerText = counter.counter4;
+document.querySelector(".counter-value5").innerText = counter.counter5;
+document.querySelector("#link1").setAttribute("href", counter.link1);
+document.querySelector("#link2").setAttribute("href", counter.link2);
+document.querySelector("#link3").setAttribute("href", counter.link3);
+document.querySelector("#link4").setAttribute("href", counter.link4);
+document.querySelector("#link5").setAttribute("href", counter.link5);
+document.querySelector("#link1").innerText = counter.title1;
+document.querySelector("#link2").innerText = counter.title2;
+document.querySelector("#link3").innerText = counter.title3;
+document.querySelector("#link4").innerText = counter.title4;
+document.querySelector("#link5").innerText = counter.title5;
+document.querySelector("#coverimage1").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage2").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage3").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage4").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage5").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage1").setAttribute("src", counter.image1);
+document.querySelector("#coverimage2").setAttribute("src", counter.image2);
+document.querySelector("#coverimage3").setAttribute("src", counter.image3);
+document.querySelector("#coverimage4").setAttribute("src", counter.image4);
+document.querySelector("#coverimage5").setAttribute("src", counter.image5);
+document.querySelector("#coverimage1").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage2").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage3").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage4").setAttribute("style", "width: 270px; height: 170px;");
+document.querySelector("#coverimage5").setAttribute("style", "width: 270px; height: 170px;");
+
+actions.forEach(action => {
+	action.addEventListener('click', () =>{
+		const type = action.dataset.action; //value inside data-action
+		console.log(type); 
+		
+		var currentep = 0
+		var nextep = 0
+		var replaced = ""
+		switch (type) {
+			case 'decrease1': counter.counter1 = counter.counter1 - 1;
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link1.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)-1;
+							replaced = counter.link1.replace(currentep,nextep);
+							counter.link1 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			case 'increase1': counter.counter1 = counter.counter1 + 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link1.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)+1;
+							replaced = counter.link1.replace(currentep,nextep);
+							counter.link1 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			case 'clear-save1': counter.counter1 = 0; 
+							counter.link1 = counter.linko1;
+							localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			
+			case 'decrease2':  counter.counter2 = counter.counter2 - 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link2.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)-1;
+							replaced = counter.link2.replace(currentep,nextep);
+							counter.link2 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			case 'increase2':  counter.counter2 = counter.counter2 + 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link2.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)+1;
+							replaced = counter.link2.replace(currentep,nextep);
+							counter.link2 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			case 'clear-save2':counter.counter2 = 0; 
+							counter.link2 = counter.linko2;
+							localStorage.setItem('counter', JSON.stringify(counter)); break;
+			
+			case 'decrease3':   counter.counter3 = counter.counter3 - 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link3.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)-1;
+							replaced = counter.link3.replace(currentep,nextep);
+							counter.link3 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break;
+			case 'increase3':counter.counter3 = counter.counter3 + 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link3.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)+1;
+							replaced = counter.link3.replace(currentep,nextep);
+							counter.link3 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			case 'clear-save3': counter.counter3 = 0; 
+							counter.link3 = counter.linko3;
+							localStorage.setItem('counter', JSON.stringify(counter)); break;
+			
+			case 'decrease4':  counter.counter4 = counter.counter4 - 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link4.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)-1;
+							replaced = counter.link4.replace(currentep,nextep);
+							counter.link4 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break;
+			case 'increase4':counter.counter4 = counter.counter4 + 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link4.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)+1;
+							replaced = counter.link4.replace(currentep,nextep);
+							counter.link4 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			case 'clear-save4':counter.counter4 = 0; 
+							counter.link4 = counter.linko4;
+							localStorage.setItem('counter', JSON.stringify(counter)); break;
+			
+			case 'decrease5':  counter.counter5 = counter.counter5 - 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link5.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)-1;
+							replaced = counter.link5.replace(currentep,nextep);
+							counter.link5 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break;
+			case 'increase5':counter.counter5 = counter.counter5 + 1; 
+							//get the number part from the end of the link
+							currentep = parseInt(counter.link5.match(/\d+$/)[0], 10);
+							nextep = parseInt(currentep)+1;
+							replaced = counter.link5.replace(currentep,nextep);
+							counter.link5 = replaced
+							localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			case 'clear-save5':counter.counter5 = 0; 
+							counter.link5 = counter.linko5;
+							localStorage.setItem('counter', JSON.stringify(counter)); break;
+			case 'newanime': slot = document.querySelector("#slot").value;
+							if (slot==1){if (document.querySelector("#title").value.length !== 0){ counter.title1 = document.querySelector("#title").value};
+										 if (document.querySelector("#ima").value.length !== 0){counter.image1 = document.querySelector("#ima").value};
+										 if (document.querySelector("#ima").value == "default"){counter.image1 = defaultimage};
+										 if (document.querySelector("#link").value.length !== 0){counter.link1 = document.querySelector("#link").value;
+										 counter.linko1 = document.querySelector("#link").value}}; 
+							if (slot==2){if (document.querySelector("#title").value.length !== 0){ counter.title2 = document.querySelector("#title").value};
+										 if (document.querySelector("#ima").value.length !== 0){counter.image2 = document.querySelector("#ima").value};
+										 if (document.querySelector("#ima").value == "default"){counter.image2 = defaultimage};
+										 if (document.querySelector("#link").value.length !== 0){counter.link2 = document.querySelector("#link").value;
+										 counter.linko2 = document.querySelector("#link").value}}; 
+							if (slot==3){if (document.querySelector("#title").value.length !== 0){ counter.title3 = document.querySelector("#title").value};
+										 if (document.querySelector("#ima").value.length !== 0){counter.image3 = document.querySelector("#ima").value};
+										 if (document.querySelector("#ima").value == "default"){counter.image3 = defaultimage};
+										 if (document.querySelector("#link").value.length !== 0){counter.link3 = document.querySelector("#link").value;
+										 counter.linko3 = document.querySelector("#link").value}};
+							if (slot==4){if (document.querySelector("#title").value.length !== 0){ counter.title4 = document.querySelector("#title").value};
+										 if (document.querySelector("#ima").value.length !== 0){counter.image4 = document.querySelector("#ima").value};
+										 if (document.querySelector("#ima").value == "default"){counter.image4 = defaultimage};
+										 if (document.querySelector("#link").value.length !== 0){counter.link4 = document.querySelector("#link").value;
+										 counter.linko4 = document.querySelector("#link").value}}; 
+							if (slot==5){if (document.querySelector("#title").value.length !== 0){counter.title5 = document.querySelector("#title").value};
+										 if (document.querySelector("#ima").value.length !== 0){counter.image5 = document.querySelector("#ima").value};
+										 if (document.querySelector("#ima").value == "default"){counter.image5 = defaultimage};
+										 if (document.querySelector("#link").value.length !== 0){counter.link5 = document.querySelector("#link").value;
+										 counter.linko5 = document.querySelector("#link").value}}; 
+							 document.getElementById("newanimeform").reset(); localStorage.setItem('counter', JSON.stringify(counter)); break; 
+			
+	}	
+	document.querySelector(".counter-value1").innerText = counter.counter1;
+	document.querySelector(".counter-value2").innerText = counter.counter2;
+	document.querySelector(".counter-value3").innerText = counter.counter3;
+	document.querySelector(".counter-value4").innerText = counter.counter4;
+	document.querySelector(".counter-value5").innerText = counter.counter5;
+	document.querySelector("#link1").setAttribute("href", counter.link1);
+	document.querySelector("#link2").setAttribute("href", counter.link2);
+	document.querySelector("#link3").setAttribute("href", counter.link3);
+	document.querySelector("#link4").setAttribute("href", counter.link4);
+	document.querySelector("#link5").setAttribute("href", counter.link5);
+	document.querySelector("#link1").innerText = counter.title1;
+	document.querySelector("#link2").innerText = counter.title2;
+	document.querySelector("#link3").innerText = counter.title3;
+	document.querySelector("#link4").innerText = counter.title4;
+	document.querySelector("#link5").innerText = counter.title5;
+	document.querySelector("#coverimage1").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage2").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage3").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage4").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage5").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage1").setAttribute("src", counter.image1);
+	document.querySelector("#coverimage2").setAttribute("src", counter.image2);
+	document.querySelector("#coverimage3").setAttribute("src", counter.image3);
+	document.querySelector("#coverimage4").setAttribute("src", counter.image4);
+	document.querySelector("#coverimage5").setAttribute("src", counter.image5);
+	document.querySelector("#coverimage1").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage2").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage3").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage4").setAttribute("style", "width: 270px; height: 170px;");
+	document.querySelector("#coverimage5").setAttribute("style", "width: 270px; height: 170px;");
+	
+}); 
+}); 
+</script>
